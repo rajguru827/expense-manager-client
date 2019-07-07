@@ -8,6 +8,8 @@ import { AccountService } from './account.service';
 })
 export class AccountsComponent implements OnInit {
 
+  accounts: [];
+
   constructor(
     private accountService: AccountService
   ) { }
@@ -18,7 +20,8 @@ export class AccountsComponent implements OnInit {
 
   getUserAccounts() {
     this.accountService.getUserAccounts().subscribe(data => {
-      console.log(data);
+      this.accounts = data.accounts;
+      console.log(data.accounts);
     })
   }
 }
