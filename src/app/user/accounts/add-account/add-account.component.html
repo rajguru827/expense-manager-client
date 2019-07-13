@@ -25,13 +25,13 @@
     <div class="form-group">
         <label>Type</label>
         <select class="form-control" name="accountType" formControlName="accountType">
-            <option value="1">Cash</option>
-            <option value="2">Bank Account</option>
+            <option value="">Select</option>
+            <option *ngFor="let accountType of accountTypes" [value]="accountType._id">{{accountType.name}}</option>
         </select>
     </div>
     <div class="form-group">
         <label>Description</label>
         <textarea name="description" class="form-control" formControlName="description"></textarea>
     </div>
-    <button type="button" class="btn btn-primary btn-block">Save</button>
+    <button type="button" class="btn btn-primary btn-block" (click)="addAccountType">Save</button>
 </form>

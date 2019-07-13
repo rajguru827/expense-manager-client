@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-add-account',
@@ -9,13 +10,16 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class AddAccountComponent implements OnInit {
 
   accountForm: FormGroup;
+  accountTypes: [];
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
     this.createForm();
+    this.getAccountTypes();
   }
 //   const account = new Account({
 //     _id: new mongoose.Types.ObjectId(),
@@ -35,4 +39,9 @@ export class AddAccountComponent implements OnInit {
     });
   }
 
+  getAccountTypes() {
+    this.accountService.getAccountTypes().subscribe(data => {
+      this.accountTypes = data.accountTypes; 
+    })
+  }
 }
