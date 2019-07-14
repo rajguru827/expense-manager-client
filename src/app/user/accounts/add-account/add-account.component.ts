@@ -21,14 +21,6 @@ export class AddAccountComponent implements OnInit {
     this.createForm();
     this.getAccountTypes();
   }
-//   const account = new Account({
-//     _id: new mongoose.Types.ObjectId(),
-//     name: req.body.name,
-//     description: req.body.description,
-//     initialBalance: req.body.initialBalance,
-//     accountType: req.body.accountType,
-//     user: req.userData.userId
-// });
 
   createForm() {
     this.accountForm = this.fb.group({
@@ -42,6 +34,14 @@ export class AddAccountComponent implements OnInit {
   getAccountTypes() {
     this.accountService.getAccountTypes().subscribe(data => {
       this.accountTypes = data.accountTypes; 
+    })
+  }
+
+  addAccount() {
+    this.accountService.addUserAccount(this.accountForm.value).subscribe(data => {
+      if (data) {
+        
+      }
     })
   }
 }
