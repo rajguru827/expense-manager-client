@@ -5,21 +5,13 @@ const headers = new HttpHeaders().set('Authorization', 'Berear eyJhbGciOiJIUzI1N
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class TransactionService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getUserAccounts() {
-    return this.http.get<any>('http://localhost:3000/accounts', { headers });
-  }
-
-  getAccountTypes() {
-    return this.http.get<any>('http://localhost:3000/accountType', { headers });
-  }
-
-  addUserAccount(account) {
-    return this.http.post<any>('http://localhost:3000/accounts', account, { headers });
+  getUserTransactions() {
+    return this.http.get<any>('http://localhost:3000/transactions', { headers });
   }
 }

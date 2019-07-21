@@ -1,17 +1,22 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand mb-4 sticky-top">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/accounts">Accounts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/transactions">Transactions</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12">
             <router-outlet></router-outlet>
-            <nav class="navbar fixed-bottom navbar-dark bg-dark">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" routerLink="/">Dashboard</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" routerLink="/accounts">Accounts</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
