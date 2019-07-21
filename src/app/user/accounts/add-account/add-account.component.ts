@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-account',
@@ -14,7 +15,8 @@ export class AddAccountComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,15 +35,15 @@ export class AddAccountComponent implements OnInit {
 
   getAccountTypes() {
     this.accountService.getAccountTypes().subscribe(data => {
-      this.accountTypes = data.accountTypes; 
-    })
+      this.accountTypes = data.accountTypes;
+    });
   }
 
   addAccount() {
     this.accountService.addUserAccount(this.accountForm.value).subscribe(data => {
       if (data) {
-        
+        this.router.navigate(['/accounts']);
       }
-    })
+    });
   }
 }
