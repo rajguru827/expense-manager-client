@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-const headers = new HttpHeaders().set('Authorization', 'Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhai5ndXJ1ODI3QGdtYWlsLmNvbSIsInVzZXJJZCI6IjVjZWE2Nzc5NWNmZDJiMGI3MGQ4YjBlMiIsImlhdCI6MTU2MzcwMzM4NywiZXhwIjoxNTYzNzA2OTg3fQ.7AMj4bqW_zvJwhQPByIjBSlrTjpL0kUXbYft7d1ihiY');
+const headers = new HttpHeaders().set('Authorization', `Berear ${localStorage.getItem('token')}`);
 
 @Injectable({
   providedIn: 'root'
