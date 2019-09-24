@@ -27,6 +27,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.authService.signIn(this.signInForm.value).subscribe(data => {
       if (data.token) {
+        localStorage.setItem('token', data.token);
         this.router.navigateByUrl('/');
       }
     });
