@@ -1,13 +1,13 @@
-<h1>Sign In</h1>
-<hr>
+<p>Please sign in to your account</p>
 <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" name="email" formControlName="email">
+        <label class="sr-only">Email</label>
+        <input type="text" class="form-control form-control-lg rounded-pill border-0 shadow-sm px-4" name="email" formControlName="email" placeholder="Email address">
     </div>
     <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" name="password" formControlName="password">
+        <label class="sr-only">Password</label>
+        <input type="password" class="form-control form-control-lg rounded-pill border-0 shadow-sm px-4" name="password" formControlName="password" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-primary btn-block" [disabled]="signInForm.invalid">Sign In</button>
+    <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 rounded-pill shadow-sm" [disabled]="signInForm.invalid">Sign In</button>
 </form>
+<a routerLink="/auth/sign-up">Create Account</a>

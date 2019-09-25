@@ -14,4 +14,8 @@ export class AuthService {
     return this.http.post<any>('http://localhost:3000/user/login', data);
   }
 
+  signUp(data) {
+    return this.http.post<any>('http://localhost:3000/user/signup', data);
+  }
+
 }
