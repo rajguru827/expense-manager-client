@@ -22,6 +22,6 @@ export class AccountsComponent implements OnInit {
     this.accountService.getUserAccounts().subscribe(data => {
       this.accounts = data.accounts;
       console.log(data.accounts);
-    })
+    });
   }
 }

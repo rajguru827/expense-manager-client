@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Categories</a>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link">Add Category</a>
+        </li>
+    </ul>
+</nav>
+<div class="list-group mt-4">
+    <a href="#" class="list-group-item list-group-item-action" *ngFor="let category of categories">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{category.name}}</h5>
+        </div>
+    </a>
+</div>
