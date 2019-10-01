@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-const headers = new HttpHeaders().set('Authorization', `Berear ${localStorage.getItem('token')}`);
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +11,14 @@ export class AccountService {
   ) { }
 
   getUserAccounts() {
-    return this.http.get<any>('http://localhost:3000/accounts', { headers });
+    return this.http.get<any>('http://localhost:3000/accounts');
   }
 
   getAccountTypes() {
-    return this.http.get<any>('http://localhost:3000/accountType', { headers });
+    return this.http.get<any>('http://localhost:3000/accountType');
   }
 
   addUserAccount(account) {
-    return this.http.post<any>('http://localhost:3000/accounts', account, { headers });
+    return this.http.post<any>('http://localhost:3000/accounts', account);
   }
 }
