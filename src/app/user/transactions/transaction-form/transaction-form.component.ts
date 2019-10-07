@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../../accounts/account.service';
 import { CategoryService } from '../../categories/category.service';
+import { TransactionService } from '../transaction.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -17,7 +18,8 @@ export class TransactionFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() {
@@ -32,10 +34,17 @@ export class TransactionFormComponent implements OnInit {
 
   createForm() {
     this.transactionForm = this.fb.group({
-      amount: [''],
-      category: [''],
-      account: [''],
-      description: [''],
+      amount: ['', Validators.required],
+      category: ['', Validators.required],
+      account: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+
+  saveTransaction() {
+    this.transactionService.addTransaction(this.transactionForm.value).subscribe(data => {
+      console.log(data);
+      this.transactionForm.reset();
     });
   }
 

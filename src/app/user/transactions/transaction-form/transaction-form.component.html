@@ -8,7 +8,7 @@
     </ul>
 </nav>
 
-<form [formGroup]="transactionForm">
+<form [formGroup]="transactionForm" (ngSubmit)="saveTransaction()">
     <div class="form-group">
         <label>Amount</label>
         <div class="input-group mb-3">
@@ -36,5 +36,5 @@
             <option *ngFor="let account of accounts" [value]="account._id">{{account.name}}</option>
         </select>
     </div>
-    <button type="button" class="btn btn-primary btn-block" (click)="addAccount()">Save</button>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="transactionForm.invalid">Save</button>
 </form>

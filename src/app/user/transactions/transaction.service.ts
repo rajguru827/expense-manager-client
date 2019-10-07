@@ -13,4 +13,8 @@ export class TransactionService {
   getUserTransactions() {
     return this.http.get<any>('http://localhost:3000/transactions');
   }
+
+  addTransaction(transaction) {
+    return this.http.post<any>('http://localhost:3000/transactions', transaction);
+  }
 }
