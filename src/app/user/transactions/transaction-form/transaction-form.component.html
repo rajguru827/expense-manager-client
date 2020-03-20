@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-dark bg-primary mb-3">
     <a class="navbar-brand" href="#">Add Transaction</a>
 
     <ul class="navbar-nav ml-auto">
@@ -9,6 +9,16 @@
 </nav>
 
 <form [formGroup]="transactionForm" (ngSubmit)="saveTransaction()">
+    <div class="row">
+        <div class="col-6 mb-3">
+            <button type="button" class="btn btn-outline-primary btn-block"
+                (click)="transactionType = 2">Expense</button>
+        </div>
+        <div class="col-6 mb-3">
+            <button type="button" class="btn btn-outline-primary btn-block"
+                (click)="transactionType = 1">Income</button>
+        </div>
+    </div>
     <div class="form-group">
         <label>Amount</label>
         <div class="input-group mb-3">
@@ -22,7 +32,9 @@
         <label>Category</label>
         <select class="form-control" name="accountType" formControlName="category">
             <option value="">Select Category</option>
-            <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option> 
+            <ng-container *ngFor="let category of categories">
+                <option [value]="category._id" *ngIf="transactionType == category.type">{{category.name}}</option>
+            </ng-container>
         </select>
     </div>
     <div class="form-group">
