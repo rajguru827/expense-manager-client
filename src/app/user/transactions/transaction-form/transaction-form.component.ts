@@ -14,7 +14,7 @@ export class TransactionFormComponent implements OnInit {
   transactionForm: FormGroup;
   categories: [];
   accounts: [];
-  transactionType: number;
+  transactionType: string;
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +31,7 @@ export class TransactionFormComponent implements OnInit {
       this.accounts = data.accounts;
     });
     this.createForm();
-    this.transactionType = 2;
+    this.transactionType = 'expense';
   }
 
   createForm() {

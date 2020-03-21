@@ -12,13 +12,14 @@
     <div class="row">
         <div class="col-6 mb-3">
             <button type="button" class="btn btn-outline-primary btn-block"
-                (click)="transactionType = 2">Expense</button>
+                (click)="transactionType = 'expense'">Expense</button>
         </div>
         <div class="col-6 mb-3">
             <button type="button" class="btn btn-outline-primary btn-block"
-                (click)="transactionType = 1">Income</button>
+                (click)="transactionType = 'income'">Income</button>
         </div>
     </div>
+    {{transactionType}}
     <div class="form-group">
         <label>Amount</label>
         <div class="input-group mb-3">
