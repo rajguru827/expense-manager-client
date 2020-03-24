@@ -1,44 +1,52 @@
-<nav class="navbar navbar-dark bg-primary navbar-expand fixed-bottom">
-    <ul class="navbar-nav w-100 justify-content-around align-items-center">
+<nav class="navbar navbar-light bg-light navbar-expand fixed-bottom">
+    <ul class="navbar-nav w-100 nav-fill align-items-center">
         <li class="nav-item">
-            <a class="nav-link text-center" routerLink="/">
-                <img src="../../assets/icons/navbar/home_white_18dp.png">
+            <a class="nav-link text-center" routerLink="/" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span class="material-icons">
+                    home
+                </span>
                 <br>
                 Dashboard
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" routerLink="/accounts">
-                <img src="../../assets/icons/navbar/account_balance_wallet_white_18dp.png">
+            <a class="nav-link text-center" routerLink="/accounts" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span class="material-icons">
+                    account_balance_wallet
+                </span>
                 <br>
                 Account
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/transactions/add">
-                <img src="../../assets/icons/navbar/add_circle_white_18dp.png">
+            <a class="nav-link" routerLink="/transactions/add" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span class="material-icons h1 mb-0">
+                    add_circle
+                </span>
             </a>
         </li>
         <li class="nav-item text-center">
-            <a class="nav-link" href="#">
-                <img src="../../assets/icons/navbar/bar_chart_white_18dp.png">
+            <a class="nav-link" href="#" routerLinkActive="active">
+                <span class="material-icons">
+                    show_chart
+                </span>
                 <br>
                 Reports
             </a>
         </li>
         <li class="nav-item text-center">
-            <a class="nav-link" href="#">
-                <img src="../../assets/icons/navbar/more_horiz_white_18dp.png">
+            <a class="nav-link" href="#" routerLinkActive="active">
+                <span class="material-icons">
+                    more_horiz
+                </span>
                 <br>
                 More
             </a>
         </li>
     </ul>
 </nav>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
+
+<router-outlet></router-outlet>

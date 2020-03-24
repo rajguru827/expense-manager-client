@@ -1,4 +1,13 @@
 //todo move to global and added custom class
-.navbar-dark .navbar-nav .nav-link {
-    font-size: 0.9rem;
+.navbar {
+    padding: 0;
+}
+.navbar-nav .nav-link {
+    font-size: 0.7rem;
+    &.active {
+        color: #007bff
+    }
+}
+.nav-fill .nav-item {
+    flex-basis: 80px;
 }
