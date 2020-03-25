@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Dashboard</a>
+</nav>
+
+<div class="card border-0 rounded-0 mt-2">
+    <div class="card-body">
+        <p>Expense vs Income</p>
+        <div class="row">
+            <div class="col-8">
+                <canvas baseChart [datasets]="barChartData" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+            <div class="col-4">
+                <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Income</th>
+                        <td>{{income | currency}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Expense</th>
+                        <td>{{expense | currency}}</td>
+                      </tr>
+                      <tr>
+                          <td colspan="2"><hr class="m-0"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Goal</th>
+                        <td>{{goal | currency}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <a routerLink="/transactions">View transactions</a>
+    </div>
+</div>
