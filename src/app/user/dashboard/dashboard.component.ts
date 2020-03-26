@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets, ChartData } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { TransactionService } from '../transactions/transaction.service';
 
@@ -21,14 +21,18 @@ export class DashboardComponent implements OnInit {
       xAxes: [{
         gridLines: {
           drawBorder: false,
+          display: false
         }
       }],
       yAxes: [{
         display: false,
         gridLines: {
           drawBorder: false,
+        },
+        ticks: {
+          beginAtZero: true
         }
-      }],
+      }]
     },
     tooltips: {
       enabled: false
@@ -36,6 +40,7 @@ export class DashboardComponent implements OnInit {
   };
 
   public barChartType: ChartType = 'bar';
+  public barChartLabels: Label[] = ['Income', 'Expense'];
   public barChartLegend = false;
   public barChartPlugins = [];
 
@@ -66,9 +71,16 @@ export class DashboardComponent implements OnInit {
       this.goal = this.income - this.expense;
 
       this.barChartData = [
-        { data: [this.income], label: 'Income' },
-        { data: [this.expense], label: 'Expense' }
-      ];
+        {
+          label: 'Income vs Expense',
+          data: [this.income, this.expense],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)'
+          ],
+          borderWidth: 0
+        }
+      ]
     });
   }
 

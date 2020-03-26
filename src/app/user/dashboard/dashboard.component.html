@@ -7,7 +7,7 @@
         <p>Expense vs Income</p>
         <div class="row">
             <div class="col-8">
-                <canvas baseChart [datasets]="barChartData" [options]="barChartOptions"
+                <canvas *ngIf="barChartData && barChartData.length" baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels"
                     [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
                 </canvas>
             </div>
