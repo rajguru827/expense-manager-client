@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class AuthService {
   ) { }
 
   signIn(data) {
-    return this.http.post<any>('http://localhost:3000/user/login', data);
+    return this.http.post<any>(environment.apiURL + 'user/login', data);
   }
 
   signUp(data) {
-    return this.http.post<any>('http://localhost:3000/user/signup', data);
+    return this.http.post<any>(environment.apiURL + 'user/signup', data);
   }
 
   signOut() {
