@@ -22,6 +22,9 @@ export class DashboardComponent implements OnInit {
         gridLines: {
           drawBorder: false,
           display: false
+        },
+        ticks: {
+          display: false
         }
       }],
       yAxes: [{
@@ -75,12 +78,16 @@ export class DashboardComponent implements OnInit {
           label: 'Income vs Expense',
           data: [this.income, this.expense],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)'
+            'rgb(40, 167, 69)',
+            'rgb(220, 53, 69)'
+          ],
+          hoverBackgroundColor: [
+            'rgb(40, 167, 69, 0.8)',
+            'rgb(220, 53, 69, 0.8)'
           ],
           borderWidth: 0
         }
-      ]
+      ];
     });
   }
 
