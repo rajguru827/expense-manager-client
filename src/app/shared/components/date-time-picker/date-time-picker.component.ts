@@ -20,38 +20,30 @@ import { noop } from 'rxjs';
   ]
 })
 export class DateTimePickerComponent implements ControlValueAccessor, OnInit, AfterViewInit {
-  @Input()
-  dateString: string;
 
-  @Input()
-  inputDatetimeFormat = 'M/d/yyyy H:mm:ss';
-  @Input()
-  hourStep = 1;
-  @Input()
-  minuteStep = 15;
-  @Input()
-  secondStep = 30;
-  @Input()
-  seconds = true;
+  @Input() dateString: string;
 
-  @Input()
-  disabled = false;
+  @Input() inputDatetimeFormat = 'M/d/yyyy H:mm:ss';
+  @Input() hourStep = 1;
+  @Input() minuteStep = 15;
+  @Input() secondStep = 30;
+  @Input() seconds = true;
+
+  @Input() disabled = false;
 
   private showTimePickerToggle = false;
 
   private datetime: DateTimeModel = new DateTimeModel();
   private firstTimeAssign = true;
 
-  @ViewChild(NgbDatepicker)
-  private dp: NgbDatepicker;
+  @ViewChild(NgbDatepicker) private dp: NgbDatepicker;
 
-  @ViewChild(NgbPopover)
-  private popover: NgbPopover;
+  @ViewChild(NgbPopover) private popover: NgbPopover;
 
   private onTouched: () => void = noop;
   private onChange: (_: any) => void = noop;
 
-  private ngControl: NgControl;
+  public ngControl: NgControl;
 
   constructor(private config: NgbPopoverConfig, private inj: Injector) {
     config.autoClose = 'outside';
@@ -113,7 +105,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
 
   onDateChange($event: NgbDateStruct) {
 
-    let conDate: string = '';
+    let conDate: string;
 
     if ($event.year) {
       conDate = `${$event.year}-${$event.month}-${$event.day}`;
