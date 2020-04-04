@@ -4,6 +4,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/for
 import { DatePipe } from '@angular/common';
 import { DateTimeModel } from './date-time.model';
 import { noop } from 'rxjs';
+import { CalenderPopoverComponent } from './calender-popover/calender-popover.component';
 
 
 @Component({
@@ -28,17 +29,14 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
   @Input() minuteStep = 15;
   @Input() secondStep = 30;
   @Input() seconds = true;
-
   @Input() disabled = false;
 
-  private showTimePickerToggle = false;
+
+  private calenderPopoverComponent: CalenderPopoverComponent;
 
   private datetime: DateTimeModel = new DateTimeModel();
   private firstTimeAssign = true;
 
-  @ViewChild(NgbDatepicker) private dp: NgbDatepicker;
-
-  @ViewChild(NgbPopover) private popover: NgbPopover;
 
   private onTouched: () => void = noop;
   private onChange: (_: any) => void = noop;
@@ -55,9 +53,11 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
   }
 
   ngAfterViewInit(): void {
-    this.popover.hidden.subscribe($event => {
-      this.showTimePickerToggle = false;
-    });
+    console.log(this.dateString)
+  }
+
+  saveReference(classFormComponent: CalenderPopoverComponent) {
+    this.calenderPopoverComponent = classFormComponent;
   }
 
   writeValue(newModel: string) {
@@ -78,10 +78,6 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     this.onTouched = fn;
   }
 
-  toggleDateTimeState($event) {
-    this.showTimePickerToggle = !this.showTimePickerToggle;
-    $event.stopPropagation();
-  }
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
@@ -126,7 +122,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     this.datetime.month = date.month;
     this.datetime.day = date.day;
 
-    this.dp.navigateTo({ year: this.datetime.year, month: this.datetime.month });
+    this.calenderPopoverComponent.dp.navigateTo({ year: this.datetime.year, month: this.datetime.month });
     console.log('test');
     this.setDateStringModel();
   }

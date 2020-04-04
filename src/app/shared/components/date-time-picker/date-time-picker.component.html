@@ -1,41 +1,22 @@
-
 <div class="input-group mr-2">
     <input [ngClass]="ngControl?.valid ? 'ng-valid' : 'ng-invalid'" class="form-control" (blur)="inputBlur($event)"
-        [ngModel]="dateString " (change)="onInputChange($event)" [disabled]='disabled' />
+        [ngModel]="dateString | date:inputDatetimeFormat" (change)="onInputChange($event)" [disabled]='disabled' />
 
     <div class="input-group-append">
         <button class="btn btn-outline-secondary" [ngbPopover]="calendarContent" [disabled]='disabled' type="button">
-            <span class="material-icons">
-                calendar_today
-            </span>
+            <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M14 0H2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                    clip-rule="evenodd" />
+                <path fill-rule="evenodd"
+                    d="M6.5 7a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z"
+                    clip-rule="evenodd" />
+            </svg>
         </button>
     </div>
 </div>
 
-<ng-template #calendarContent>
-    <div>
-        <div *ngIf="!showTimePickerToggle">
-            <ngb-datepicker #dp name="datepicker" [ngModel]="datetime" (ngModelChange)="onDateChange($event)">
-            </ngb-datepicker>
-            <button class="btn btn-block btn-outline-secondary" [disabled]="!datetime?.day"
-                [ngbPopover]="timePickerContent" type="button" (click)="toggleDateTimeState($event)">
-                <span class="material-icons">
-                    access_time
-                </span>
-            </button>
-        </div>
-        <div *ngIf="showTimePickerToggle">
-            <button class="btn btn-block btn-outline-secondary" [ngbPopover]="calendarContent" type="button"
-                (click)="toggleDateTimeState($event)">
-                <span class="material-icons">
-                    calendar_today
-                </span>
-            </button>
-            <div class="mt-auto">
-                <ngb-timepicker #tp name="timepicker" [ngModel]="datetime" (ngModelChange)="onTimeChange($event)"
-                    [seconds]="seconds" [hourStep]="hourStep" [minuteStep]="minuteStep" [secondStep]="secondStep">
-                </ngb-timepicker>
-            </div>
-        </div>
-    </div>
+<ng-template #calendarContent let-calendarContent>
+    <app-calender-popover (dateChange)="onDateChange($event)" (componentIsReady)="saveReference($event)"></app-calender-popover>
 </ng-template>

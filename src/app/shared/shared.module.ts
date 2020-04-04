@@ -4,10 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateTimePickerComponent } from './components/date-time-picker/date-time-picker.component';
+import { CalenderPopoverComponent } from './components/date-time-picker/calender-popover/calender-popover.component';
 
 
 @NgModule({
-  declarations: [DateTimePickerComponent],
+  declarations: [DateTimePickerComponent, CalenderPopoverComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -21,7 +22,8 @@ import { DateTimePickerComponent } from './components/date-time-picker/date-time
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    DateTimePickerComponent
+    DateTimePickerComponent,
+    CalenderPopoverComponent
   ]
 })
 export class SharedModule { }
