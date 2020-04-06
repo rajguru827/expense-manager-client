@@ -40,6 +40,16 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="cdate">Active End Date</label>
+                <app-date-time-picker formControlName="cdate" name="cdate"></app-date-time-picker>
+                <!-- <div class="text-danger" *ngIf="formGroup.get('date').errors?.required">Active End Date is
+                    required.</div>
+                <div class="text-danger"
+                    *ngIf="formGroup.get('date')?.value && formGroup.get('date')?.errors?.isValid">
+                    Active End Date must be a valid date.</div> -->
+
+            </div>
+            <div class="form-group">
                 <label>Description</label>
                 <textarea name="description" class="form-control" formControlName="description"></textarea>
             </div>
