@@ -20,7 +20,7 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BerearTokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {
       provide: APP_BASE_HREF,
       useValue: window['base-href']
