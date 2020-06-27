@@ -20,7 +20,6 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BerearTokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-
   ],
   bootstrap: [AppComponent]
 })
