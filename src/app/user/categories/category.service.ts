@@ -12,6 +12,6 @@ export class CategoryService {
   ) { }
 
   getCategories() {
-    return this.http.get<any>(environment.apiURL + 'category');
+    return this.http.get<any>(environment.apiURL + 'userCategories');
   }
 }
