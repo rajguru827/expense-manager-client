@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../../accounts/account.service';
 import { CategoryService } from '../../categories/category.service';
 import { TransactionService } from '../transaction.service';
@@ -11,13 +11,13 @@ import { TransactionService } from '../transaction.service';
 })
 export class TransactionFormComponent implements OnInit {
 
-  transactionForm: FormGroup;
+  transactionForm: UntypedFormGroup;
   categories: [];
   accounts: [];
   transactionType: string;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private accountService: AccountService,
     private categoryService: CategoryService,
     private transactionService: TransactionService
