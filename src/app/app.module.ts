@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BerearTokenInterceptor } from './shared/interceptors/berear-token.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
@@ -14,10 +13,10 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    SharedModule
+    AppRoutingModule
   ],
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: BerearTokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
