@@ -4,9 +4,10 @@ import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-account',
-  templateUrl: './add-account.component.html',
-  styleUrls: ['./add-account.component.scss']
+    selector: 'app-add-account',
+    templateUrl: './add-account.component.html',
+    styleUrls: ['./add-account.component.scss'],
+    standalone: false
 })
 export class AddAccountComponent implements OnInit {
 
