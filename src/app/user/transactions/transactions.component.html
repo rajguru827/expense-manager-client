@@ -1,21 +1,27 @@
 <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Transactions</a>
+  <a class="navbar-brand" href="#">Transactions</a>
 
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" routerLink="/transactions/add">Add Transaction</a>
-        </li>
-    </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/transactions/add">Add Transaction</a>
+    </li>
+  </ul>
 </nav>
 
 <div class="list-group mt-4">
-    <a href="#" class="list-group-item list-group-item-action" *ngFor="let transaction of transactions">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{transaction.category?.name}}</h5>
-            <small class="text-success" *ngIf="transaction.credit">{{transaction.credit | currency}}</small>
-            <small class="text-danger" *ngIf="transaction.debit">{{transaction.debit | currency}}</small>
-        </div>
-        <p class="mb-1">{{transaction.description}}</p>
-        <small>{{transaction.date | date}}</small>
+  @for (transaction of transactions; track transaction) {
+    <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{transaction.category?.name}}</h5>
+        @if (transaction.credit) {
+          <small class="text-success">{{transaction.credit | currency}}</small>
+        }
+        @if (transaction.debit) {
+          <small class="text-danger">{{transaction.debit | currency}}</small>
+        }
+      </div>
+      <p class="mb-1">{{transaction.description}}</p>
+      <small>{{transaction.date | date}}</small>
     </a>
+  }
 </div>
